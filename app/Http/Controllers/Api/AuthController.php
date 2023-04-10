@@ -10,6 +10,7 @@ use App\Http\Responses\Auth\LogoutResponse;
 use App\Http\Responses\Auth\RegisterResponse;
 use App\Interfaces\Services\IAuthService;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,7 @@ class AuthController extends Controller
         try {
             $data = $this->authService->login($request->all());
         } catch (\Exception $exception) {
-            return $response->error($exception->getMessage());
+            return $response->error(message: $exception->getMessage(), status: $exception->getCode());
         }
 
         return $response->success($data);
@@ -45,11 +46,11 @@ class AuthController extends Controller
     public function register(RegisterRequest $request, RegisterResponse $response): JsonResponse
     {
         try {
-            $data = $this->authService->register($request->all());
+            $data = $this->authService->register($request->validated());
         } catch (\Exception $exception) {
             return $response->error($exception->getMessage());
         }
-        return $response->success($data);
+        return $response->success($data, status: Response::HTTP_CREATED);
     }
 
     /**

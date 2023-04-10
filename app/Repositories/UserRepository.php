@@ -10,4 +10,9 @@ class UserRepository extends AbstractRepository implements IUserRepository
     {
         return $this->model->create($data);
     }
+
+    public function first(array $conditions = [])
+    {
+        return $this->model->where($conditions)->first();
+    }
 }

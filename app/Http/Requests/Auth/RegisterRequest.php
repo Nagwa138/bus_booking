@@ -17,12 +17,14 @@ class RegisterRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array
      */
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'min:4', 'max:191'],
+            'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8', 'max:191', 'confirmed'],
         ];
     }
 }
