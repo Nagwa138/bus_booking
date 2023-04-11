@@ -18,7 +18,7 @@
 
 <hr>
 
-#### Copy of our database -- github repo link :
+#### You can find a copy of our database structure in /database/schema folder
 
 <hr>
 
