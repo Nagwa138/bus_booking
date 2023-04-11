@@ -23,19 +23,19 @@ class SeatService implements ISeatService
      * @param int $seatId
      * @param int $startStationId
      * @param int $endStationId
-     * @return array
+     * @return Seat
      * @throws \Throwable
      */
-    public function book(int $seatId, int $startStationId, int $endStationId): array
+    public function book(int $seatId, int $startStationId, int $endStationId): Seat
     {
         $seat = $this->seatRepository->update($seatId, [
             'user_id' => auth()->user()->id,
-            'start_point_id' => $startStationId,
-            'destination_point_id' => $endStationId
+            'start_station_id' => $startStationId,
+            'end_station_id' => $endStationId
         ]);
 
         throw_unless($seat, new \Exception('Seat not booked!', Response::HTTP_INTERNAL_SERVER_ERROR));
 
-        return $seat->toArray();
+        return $seat;
     }
 }

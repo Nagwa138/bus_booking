@@ -27,7 +27,7 @@ class BookSeatRequest extends FormRequest
         return [
             'seat_id' => ['required', 'int', 'exists:seats,id'],
             'start_station_id' => ['required', 'int', 'exists:stations,id'],
-            'end_station_id' => ['required', 'int', 'exists:stations,id', new StartStationBeforeEndStationOrderRule($this->get('start_station_id'))],
+            'end_station_id' => ['bail', 'required', 'int', 'exists:stations,id', new StartStationBeforeEndStationOrderRule($this->get('start_station_id'))],
         ];
     }
 }

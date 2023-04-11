@@ -16,8 +16,8 @@ class TripSeeder extends Seeder
     {
         Trip::factory()->create([
             'bus_id' => Bus::first()->id,
-            'start_point_id' => Station::first()->id,
-            'destination_point_id' => Station::orderBy('order', 'DESC')->first()->id,
+            'start_station_id' => Station::first()->id,
+            'end_station_id' => Station::orderBy('order', 'DESC')->first()->id,
         ]);
     }
 }

@@ -24,8 +24,8 @@ abstract class AbstractRepository
         return $model;
     }
 
-    public function all(): Collection
+    public function all(string $orderBy = 'id', string $order = 'ASC'): Collection
     {
-        return $this->model->all();
+        return $this->model->orderBy($orderBy, $order)->get();
     }
 }

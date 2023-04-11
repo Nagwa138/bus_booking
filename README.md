@@ -1,23 +1,27 @@
-Instruction will be added 
+## Hi, Its bus booking system!
 
-copy .env.example .env
+### Steps to run the web app : 
 
-change USER_PORT value in .env file (optional)
+- copy .env.example .env 
+  - change USER_PORT value in .env file to the number you want -> it would be the docker container port for your server (optional)
+- docker-compose up -d --build (linux), docker compose up -d --build (mac)
+- docker-compose exec app bash (linux), docker compose exec app bash (mac)
+- composer install 
+- composer dump-autoload 
+- php artisan key:generate
+- php artisan config:clear
+- php artisan test (for testing)
 
-docker-compose up -d --build
+<hr>
 
-docker-compose exec app bash 
+#### Use postman collection apis : for test system -- github repo link :
 
-composer install
+<hr>
 
-composer dump-autoload
+#### Copy of our database -- github repo link :
 
-php artisan key:generate
+<hr>
 
--> run : php artisan test : for test system
+### To test app using postman -- github link
 
--> use postman collection apis : for test system -- github repo link : 
-
--> video how to use
-
-By Nagwa Ali
+<i> By Nagwa Ali <3 </i>

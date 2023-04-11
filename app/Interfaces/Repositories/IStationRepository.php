@@ -8,5 +8,5 @@ interface IStationRepository
 {
     public function findById(int $id);
 
-    public function all(): Collection;
+    public function all(string $orderBy): Collection;
 }

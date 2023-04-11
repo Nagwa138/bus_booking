@@ -12,19 +12,19 @@ class Seat extends Model
 
     protected $fillable = [
         'bus_id',
-        'start_point_id',
-        'destination_point_id',
+        'start_station_id',
+        'end_station_id',
         'user_id'
     ];
 
-    public function startingStation(): BelongsTo
+    public function startStation(): BelongsTo
     {
-        return $this->belongsTo(Station::class, 'start_point_id');
+        return $this->belongsTo(Station::class, 'start_station_id');
     }
 
-    public function destinationStation(): BelongsTo
+    public function endStation(): BelongsTo
     {
-        return $this->belongsTo(Station::class, 'destination_point_id', 'id');
+        return $this->belongsTo(Station::class, 'end_station_id');
     }
 
     public function bus(): BelongsTo

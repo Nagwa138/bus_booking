@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bus_id')->constrained();
-            $table->unsignedBigInteger('start_point_id')->nullable();
-            $table->unsignedBigInteger('destination_point_id')->nullable();
+            $table->unsignedBigInteger('start_station_id')->nullable();
+            $table->unsignedBigInteger('end_station_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

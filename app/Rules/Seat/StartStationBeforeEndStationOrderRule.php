@@ -19,7 +19,7 @@ class StartStationBeforeEndStationOrderRule implements ValidationRule
         $endStation = app(IStationRepository::class)->findById($value);
 
         if ($endStation->order < $startStation->order) {
-            $fail('Destination station must be before start station in order!');
+            $fail('Destination station must be after start station in order!');
         }
     }
 }

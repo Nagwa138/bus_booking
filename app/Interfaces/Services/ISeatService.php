@@ -18,7 +18,7 @@ interface ISeatService
      * @param int $seatId
      * @param int $startStationId
      * @param int $endStationId
-     * @return array
+     * @return Seat
      */
-    public function book(int $seatId, int $startStationId, int $endStationId): array;
+    public function book(int $seatId, int $startStationId, int $endStationId): Seat;
 }

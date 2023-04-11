@@ -15,7 +15,7 @@ class StationFactory extends Factory
     {
         return [
             'name' => fake()->city,
-            'order' => rand(1, 29)
+            'order' => rand(1,28)
         ];
     }
 }

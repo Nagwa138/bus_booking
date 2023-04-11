@@ -34,31 +34,31 @@ class ListAvailableSeatsTest extends TestCase
         $finalStation = Station::factory()->create(['order' => $firstStation->order + 5]);
 
         $trip = Trip::factory()->create([
-            'start_point_id' => $firstStation->id,
-            'destination_point_id' => $finalStation->id,
+            'start_station_id' => $firstStation->id,
+            'end_station_id' => $finalStation->id,
         ]);
 
         Seat::factory(5)->create([
-            'start_point_id' => $trip->start_point_id,
-            'destination_point_id' => $trip->destination_point_id,
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $trip->end_station_id,
             'bus_id' => $trip->bus_id
         ]);
 
         Seat::factory(7)->create([
-            'start_point_id' => null,
-            'destination_point_id' => null,
+            'start_station_id' => null,
+            'end_station_id' => null,
             'user_id' => null,
             'bus_id' => $trip->bus_id
         ]);
 
         $response = $this->json('get','/api/seats/list/'.$trip->id, [
-            'start_station_id' => $trip->start_point_id,
-            'end_station_id' => $trip->destination_point_id
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $trip->end_station_id
         ]);
 
         $seatsCount = Seat::where([
-            'start_point_id' => $trip->start_point_id,
-            'destination_point_id' => $trip->destination_point_id,
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $trip->end_station_id,
             'bus_id' => $trip->bus_id
         ])->whereNotNull('user_id')->count();
 
@@ -68,9 +68,6 @@ class ListAvailableSeatsTest extends TestCase
     }
 
     // todo :: test 3 levels in in-between station to book
-    // test book seat
-    // add environment
-    // add readme instructions
 
     public function testUserListSeatWillBeAvailableInCrossStation()
     {
@@ -83,37 +80,37 @@ class ListAvailableSeatsTest extends TestCase
         $middleStation = Station::factory()->create(['order' => $finalStation->order - 1]);
 
         $trip = Trip::factory()->create([
-            'start_point_id' => $firstStation->id,
-            'destination_point_id' => $finalStation->id,
+            'start_station_id' => $firstStation->id,
+            'end_station_id' => $finalStation->id,
         ]);
 
         Seat::factory(5)->create([
-            'start_point_id' => $trip->start_point_id,
-            'destination_point_id' => $trip->destination_point_id,
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $trip->end_station_id,
             'bus_id' => $trip->bus_id
         ]);
 
         Seat::factory(5)->create([
-            'start_point_id' => null,
-            'destination_point_id' => null,
+            'start_station_id' => null,
+            'end_station_id' => null,
             'user_id' => null,
             'bus_id' => $trip->bus_id
         ]);
 
         Seat::factory(2)->create([
-            'start_point_id' => $trip->start_point_id,
-            'destination_point_id' => $middleStation->id,
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $middleStation->id,
             'bus_id' => $trip->bus_id
         ]);
 
         $response = $this->json('get','/api/seats/list/'.$trip->id, [
             'start_station_id' => $middleStation->id,
-            'end_station_id' => $trip->destination_point_id
+            'end_station_id' => $trip->end_station_id
         ]);
 
         $seatsCount = Seat::where([
-            'start_point_id' => $trip->start_point_id,
-            'destination_point_id' => $trip->destination_point_id,
+            'start_station_id' => $trip->start_station_id,
+            'end_station_id' => $trip->end_station_id,
             'bus_id' => $trip->bus_id
         ])->whereNotNull('user_id')->count();
 

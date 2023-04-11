@@ -32,7 +32,7 @@ class SeatController extends Controller
         return $response->success($seats);
     }
 
-    public function book(BookSeatRequest $request, SeatBookResponse $response): JsonResponse
+    public function book(BookSeatRequest $request, SeatBookResponse $response): JsonResponse|SeatResource
     {
         try {
             $seat = $this->seatService->book($request['seat_id'], $request['start_station_id'], $request['end_station_id']);
@@ -40,6 +40,6 @@ class SeatController extends Controller
             return $response->error($exception->getMessage(), $exception->getCode());
         }
 
-        return $response->success($seat);
+        return new SeatResource($seat);
     }
 }

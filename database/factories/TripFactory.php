@@ -16,8 +16,8 @@ class TripFactory extends Factory
     public function definition(): array
     {
         return [
-            'start_point_id' => Station::factory()->create()->id,
-            'destination_point_id' => Station::factory()->create()->id,
+            'start_station_id' => Station::first()->id,
+            'end_station_id' => Station::first()->id,
             'bus_id' => Bus::factory()->create()->id,
         ];
     }

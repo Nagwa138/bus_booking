@@ -18,11 +18,11 @@ class SeatRepository extends AbstractRepository implements ISeatRepository
 
         $seatQuery->whereNull('user_id')->where('bus_id', $trip->bus_id);
 
-        $seatQuery->orWhereHas('destinationStation', function ($query) use ($startStation){
+        $seatQuery->orWhereHas('endStation', function ($query) use ($startStation){
             $query->where('order', '<=', $startStation->order);
         });
 
-        $seatQuery->orWhereHas('startingStation', function ($query) use ($endStation){
+        $seatQuery->orWhereHas('startStation', function ($query) use ($endStation){
             $query->where('order', '>=', $endStation->order);
         });
 

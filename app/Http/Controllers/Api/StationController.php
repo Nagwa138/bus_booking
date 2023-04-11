@@ -15,7 +15,7 @@ class StationController extends Controller
 
     public function index(): AnonymousResourceCollection
     {
-        $stations = $this->stationRepository->all();
+        $stations = $this->stationRepository->all('order');
         return StationResource::collection($stations);
     }
 }
