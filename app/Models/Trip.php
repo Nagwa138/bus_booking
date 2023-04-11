@@ -11,18 +11,18 @@ class Trip extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start_point_id',
-        'destination_point_id',
+        'start_station_id',
+        'end_station_id',
         'bus_id',
     ];
 
     public function startingStation(): BelongsTo
     {
-        return $this->belongsTo(Station::class, 'start_point_id');
+        return $this->belongsTo(Station::class, 'start_station_id');
     }
     public function destinationStation(): BelongsTo
     {
-        return $this->belongsTo(Station::class, 'destination_point_id');
+        return $this->belongsTo(Station::class, 'end_station_id');
     }
 
     public function bus(): BelongsTo

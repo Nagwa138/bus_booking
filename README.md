@@ -9,6 +9,7 @@
 - composer install 
 - composer dump-autoload 
 - php artisan key:generate
+- php artisan migrate --seed
 - php artisan config:clear
 - php artisan test (for testing)
 
