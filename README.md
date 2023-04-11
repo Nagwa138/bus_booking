@@ -2,7 +2,7 @@
 
 ### Steps to run the web app : 
 
-- copy .env.example .env 
+- cp .env.example .env 
   - change USER_PORT value in .env file to the number you want -> it would be the docker container port for your server (optional)
 - docker-compose up -d --build (linux), docker compose up -d --build (mac)
 - docker-compose exec app bash (linux), docker compose exec app bash (mac)
