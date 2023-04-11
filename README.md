@@ -14,7 +14,7 @@
 
 <hr>
 
-#### Use postman collection apis : for test system -- github repo link :
+#### Use postman collection apis for test system -- https://github.com/Nagwa138/bus_booking_postman_collection 
 
 <hr>
 
