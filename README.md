@@ -23,6 +23,6 @@
 
 <hr>
 
-### To test app using postman -- github link
+### To test app using postman -- https://github.com/Nagwa138/bus_booking_video
 
 <i> By Nagwa Ali <3 </i>
